@@ -59,8 +59,8 @@ This lab's purpose is to use blind SQL injection within OWASP juice shop. I used
    }
    ```
 
-   5. Success! But I wasn't finished; I still needed to figure out how to get this product in my basket, and order it. Looking at every product in the backend, I noticed they each had a unique ID. I figured that this ID might be used when you add a product to your basket. Going back to the front end and examining the network tab, when I added a product to my basket, a POST request was made with the keys `productId`, `BasketId`, and `quantity`. The `ProductId` key matched the ID of the product that I saw on the backend.
-   6. The last step was to send my own POST request that contained the product ID of the Christmas special offer. I think I can use Burp to do this, but I know that Firefox lets you edit and resend requests, so I just used that. I changed the request to `{"ProductId": 10, "BasketId": "1", "quantity": 1}`, and refreshing the page resulted in the following:![success](success.png)
+5. Success! But I wasn't finished; I still needed to figure out how to get this product in my basket, and order it. Looking at every product in the backend, I noticed they each had a unique ID. I figured that this ID might be used when you add a product to your basket. Going back to the front end and examining the network tab, when I added a product to my basket, a POST request was made with the keys `productId`, `BasketId`, and `quantity`. The `ProductId` key matched the ID of the product that I saw on the backend.
+6. The last step was to send my own POST request that contained the product ID of the Christmas special offer. I think I can use Burp to do this, but I know that Firefox lets you edit and resend requests, so I just used that. I changed the request to `{"ProductId": 10, "BasketId": "1", "quantity": 1}`, and refreshing the page resulted in the following:![success](success.png)
 
 7. Now that I forced it into my cart, I could follow the standard checkout procedures and "order" it.
 
