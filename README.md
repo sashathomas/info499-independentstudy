@@ -16,19 +16,19 @@ This week, our task was to pick and complete a 4-star challenge in juice shop. I
 
       ```json
       {
-        status: "success", 
-       	data: {
-      		username: ""
-      		role: "customer"
-      		deluxeToken: ""
-      		lastLoginIp: "0.0.0.0"
-      		profileImage: "/assets/public/images/uploads/default.svg"
-      		isActive: true
-      		id: 19
-      		email: "hello1234@gmail.com"
-      		updatedAt: "2020-04-13T00:32:22.581Z"
-      		createdAt: "2020-04-13T00:32:22.581Z"
-      		deletedAt: null
+       status: "success", 
+       data: {
+         username: ""
+         role: "customer"
+         deluxeToken: ""
+         lastLoginIp: "0.0.0.0"
+         profileImage: "/assets/public/images/uploads/default.svg"
+         isActive: true
+         id: 19
+         email: "hello1234@gmail.com"
+         updatedAt: "2020-04-13T00:32:22.581Z"
+         createdAt: "2020-04-13T00:32:22.581Z"
+         deletedAt: null
         }
       }
       ```
@@ -61,15 +61,15 @@ This week, our task was to pick and complete a 4-star challenge in juice shop. I
 
 3. From this point, I spent lots of time hopping from one error to another. My first couple queries were met with syntax errors, until I moved my `UNION SELECT` completely outside of my parenthesis. The string `search?q=')) UNION SELECT a from b--` resulted in the following error:
 
-   ![error1-2](/Users/turtle/Documents/Info 499/Week 2/error1-2.png)
+   ![error1-2](error1-2.png)
 
    I was happy to see this error, because it told me that the API was correctly reading my `UNION SELECT`. However, this is where I ran into a wall. How could I know the name of the table, or even the column headers? I spent more time than I'd like to admit trying to figure out how to enumerate the table names. Eventually, I tried some common table names I found, and `users` worked. Not the most elegant solution... In retrospect, my reconaissance actually gave me this answer. As I mentioned, creating an account results in a POST request being sent to `/api/users`. `search?q=')) UNION SELECT a from users--` resulted in the following error:
 
-   ![error2-2](/Users/turtle/Documents/Info 499/Week 2/error2-2.png)
+   ![error2-2](error2-2.png)
 
 5. From this, I knew a table called `users` existed, I just needed to enumerate the column names. I figured username or password had to be in there somewhere, so I tried the following string: `search?q=')) UNION SELECT username, password from users--` and was met with an error I didn't expect:
 
-   ![error3-2](/Users/turtle/Documents/Info 499/Week 2/error3-2.png)
+   ![error3-2](error3-2.png)
 
    What? After some googling and stack-exchanging, I learned that `UNION SELECT` requires both tables to have the same number of columns. Which makes sense, because when you combine two tables top-to-bottom, a column can't be missing. It was attempting to combine two columns from the `users` table to the `products` table, which I already knew had 9 columns, because I could see 9 JSON keys. My options then were to force feed  dummy information for it to fill the columns with, or find 7 other columns in the `users` table. 
 
