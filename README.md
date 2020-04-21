@@ -60,6 +60,6 @@ I definitely feel more comfortable with SSRF and think this was a good introduct
 
 In conclusion, this lab absolutely pushed my limits. I'm not sure I solved it the intended way, but it was an excellent hunt, and forced me to use programs and learn things things I wasn't aware of. The day of writing this, I stumbled upon a unix command which I didn't know about, called `strings`, which returns the raw strings written in the binary of an executable. Out of curiosity, I ran `strings` with the juice shop malware, and grepped a couple search words to see what would happen. Of course, this gave me the same link I found in Cutter (which makes sense, it's the same binary):
 
-![strings](/Users/turtle/Documents/Info 499/Week 3/strings.png)
+![strings](strings.png)
 
 This would have potentially saved me hours, although I wouldn't have gotten to know Cutter as well. In the future, I will keep this in mind as a good starting step when analyzing a program.
