@@ -8,7 +8,7 @@ April 27th 2020
 
 This week, I did some of the challenges through the HackerOne CTF, which ended up giving me an invitation to a private bug bounty program!
 
-As with the other labs, I just used Chrome and Firefox. The mock-website for this challenge is called "Postbook," and let's users make an account, update some settings, and post things to a global timeline. It's similar to JuiceShop in a way, but much, much simpler. 
+As with the other labs, I just used Chrome and Firefox. The mock website for this challenge is called "Postbook," and let's users make an account, update some settings, and post things to a global timeline. It's similar to JuiceShop in a way, but much, much simpler. 
 
 ## Steps to Reproduce (Flag0)
 
