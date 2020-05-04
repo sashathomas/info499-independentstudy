@@ -25,7 +25,7 @@ To complete this lab, I used Nmap, DirBuster, Metasploit, John the Ripper, and F
 
    ![dirbuster](images/dirbuster.PNG)
 
-3. The three directories it was able to find were `/icons/`, `/music/`, and `/ona/`. As icons and music didn't exactly appeal to me, I decided to look into `/ona/`. Hitting this in my browser brought me to an interesting page:
+3. The three directories DirBuster was able to find were `/icons/`, `/music/`, and `/ona/`. As icons and music didn't exactly appeal to me, I decided to look into `/ona/`. Hitting this in my browser brought me to an interesting page:
 
    ![ona](images/ona.PNG)
 
