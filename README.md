@@ -14,13 +14,13 @@ I haven't done much work being this close to the binary, so many of these concep
 
 1. The first challenge is accessed through the web. You are given a very simple webpage which allows you to upload a file:
 
-   ![start](C:\Users\turtl\Documents\week6\images\start.png)
+   ![start](images\start.png)
 
    I started out by looking at the source code and network tab for any hints. It was uninteresting apart from a hidden input which defines the max file size you can upload, which was 100kb. 
 
 2. Just to see what would happen, I uploaded a picture of a cat to see if I could find it in `/uploads` as the page says. While I couldn't access the directory, I was able to access individual files:
 
-   ![uploadedcatto](C:\Users\turtl\Documents\week6\images\uploadedcatto.PNG)
+   ![uploadedcatto](images\uploadedcatto.PNG)
 
 3. Since this was the first challenge, I assumed that it was likely there were no mitigations for the types of files I could upload. I also noticed that when I uploaded a file, I was taken to `/send_clearence.php`, so my next idea was to upload a PHP script and try to interact with the machine running the site. 
 
@@ -34,7 +34,7 @@ I haven't done much work being this close to the binary, so many of these concep
 
    Uploading this did exactly what I wanted it to:
 
-   ![helloworld](C:\Users\turtl\Documents\week6\images\helloworld.PNG)
+   ![helloworld](images\helloworld.PNG)
 
 5. With this information, it was mostly trial and error. Researching led me to the `shell_exec` command, and this super basic PHP let me pass in commands through the browser:
 
@@ -45,7 +45,7 @@ I haven't done much work being this close to the binary, so many of these concep
    ?>
    ```
 
-   ![phpscriptworks](C:\Users\turtl\Documents\week6\images\phpscriptworks.PNG)
+   ![phpscriptworks](images\phpscriptworks.PNG)
 
 6. The first page instructs you to poke around the user directories when you "gain clearance." The only user directory I had access to was level1's, which initially I thought was a dead end:
 
@@ -53,7 +53,7 @@ I haven't done much work being this close to the binary, so many of these concep
 
    Horrible formatting which could be fixed by a couple lines of code aside, I decided to check `.bash_history`, mostly because the initial page told me to look around here. I found an interesting string that looked like it could represent a password:
 
-   ![plaintext](C:\Users\turtl\Documents\week6\images\plaintext.PNG)
+   ![plaintext](images\plaintext.PNG)
 
    And lucky enough, this string is the SSH password for level2, which I'm still working on...
 
