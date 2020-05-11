@@ -1,4 +1,4 @@
-# Week 7 - SmashTheStack (Level 1...) 
+# Week 6 - SmashTheStack (Level 1...) 
 
 Sasha Thomas
 
