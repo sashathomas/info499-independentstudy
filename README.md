@@ -47,11 +47,11 @@ I'm going to split up my process into two parts; the buffer overflow, and bypass
 
    So, I first needed a password (it was intentionally X'd out). Using the `strings` command (which I learned from a previous lab!) on `level2` gave me an interesting string:
 
-   ![strings](/Users/turtle/Documents/Info 499/Week 8/images/strings.png)
+   ![strings](images/strings.png)
 
    Knowing that `level2` required an argument, running it with the `fsckmelogic` resulted in a segmentation fault:
 
-   ![segfault](/Users/turtle/Documents/Info 499/Week 8/images/segfault.png)
+   ![segfault](images/segfault.png)
 
 3. So I knew I was getting somewhere, but I was a little stuck, conceptually. My basic understanding was that a segmentation fault meant a program was trying to access memory which it wasn't allowed to. I had only seen this within the context of a buffer overflow, and it didn't seem like I was overflowing anything. Upon examining the code further, I realized there were actually two arguments, and when I added another argument, the program printed the second argument and exited normally. 
 
@@ -59,15 +59,15 @@ I'm going to split up my process into two parts; the buffer overflow, and bypass
 
 5. Creating the payload was an exercise in many, many rounds of trial and error. But doing this over and over again really helped me grasp the basics of buffer overflow. First, seeing that this was expecting 4096 bytes of data, I tried giving it 4097 bytes of data to see what would happen:
 
-   ![firstry](/Users/turtle/Documents/Info 499/Week 8/images/firstry.png)
+   ![firstry](images/firstry.png)
 
    But no such luck. I tried incrementally adding 8 characters to 4096, until I found that anything above 4107 bytes would successfuly create a segmentation fault:
 
-   ![segfault2](/Users/turtle/Documents/Info 499/Week 8/images/segfault2.png)
+   ![segfault2](images/segfault2.png)
 
 6. From my research, I had a vague idea that the next step would be to take control of the EIP. Adding a couple more A's to the end of my buffer, I found that I needed 4108 bytes to create the segmentation fault, and adding four bytes to the end of my buffer would successfully overwrite the EIP!
 
-   ![eipoverwritten](/Users/turtle/Documents/Info 499/Week 8/images/eipoverwritten.png)
+   ![eipoverwritten](images/eipoverwritten.png)
 
 7. This was, unfortunately, the beginning of my real struggles. The concept behind a NOP sled was still confusing to me, and I wasn't sure how to find an address to go back to, as many of the guides I read told me I needed. What I found is that all the buffer overflows had the following general structure:
 
@@ -85,7 +85,7 @@ I'm going to split up my process into two parts; the buffer overflow, and bypass
 
 9. All I needed to do was find an address in my NOP sled. Examining the stack pointers with GDB, I went to around the middle of the NOP sled (using the command `x/200xb $esp-2000`, a function of GDB I learned from my textbook), and picked a random address:
 
-   ![NOPsled](/Users/turtle/Documents/Info 499/Week 8/images/NOPsled.png)
+   ![NOPsled](images/NOPsled.png)
 
    I figured `0xbfadb000` was easy to remember. I copied it into my payload (backwards!!), and hit enter, eagerly awaiting the shell I worked so hard for. 
 
@@ -120,7 +120,7 @@ I'm going to split up my process into two parts; the buffer overflow, and bypass
 
 9. I let it run, and surprisingly, it found a match after running for about two minutes!
 
-    ![pwnd](/Users/turtle/Documents/Info 499/Week 8/images/pwnd.png)
+    ![pwnd](images/pwnd.png)
 
 ## Results and Discussion
 
