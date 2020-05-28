@@ -24,7 +24,7 @@ To complete this, I used the MetaSploit Framework, MSFVenom, Python, `netcat`, N
 
    ![acmesite](images/acmesite.png)
 
-   I gave OWASP DirBuster a spin, because it led me down the right path with OpenAdmin, but the results weren't as impressive for this machine. Looking back at my Nmap scan, I started to google the services and ports I didn't recognize (which was pretty much each one). It was until I googled `mountd`, the service running on port 2049, that led me to something interesting. 
+   I gave OWASP DirBuster a spin, because it led me down the right path with OpenAdmin, but the results weren't as impressive for this machine. Looking back at my Nmap scan, I started to google the services and ports I didn't recognize (which was pretty much each one). It wasn't until I googled `mountd`, the service running on port 2049, that led me to something interesting. 
 
 2. Some research led me to NFS or Network File System, which allows remote hosts to mount systems/directories over a network. If I could mount a directory from this machine to mine, then this might give me some good information. Running the command `showmount` told me that everyone could mount the directory `/site_backups`:
 
