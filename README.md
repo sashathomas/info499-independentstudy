@@ -1,6 +1,6 @@
 # Week 9 - HTB - Remote
 
-![remote](C:\Users\turtl\Documents\week9\images\remote.png)
+![remote](images/remote.png)
 
 Sasha Thomas
 
